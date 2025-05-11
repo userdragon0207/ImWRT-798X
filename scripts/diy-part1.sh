@@ -17,6 +17,10 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
+# 添加一个 feed 源
+echo 'src-git dockerman https://github.com/lisaac/luci-app-dockerman' >>feeds.conf.default
+# 请把 https://github.com/xxx/dockerman 替换成实际的 dockerman feed 源地址
+
 # 检查 feeds.conf.default 是否变更
 if [ -f feeds.conf.default ]; then
   echo "feeds.conf.default 已存在，无需修改"
