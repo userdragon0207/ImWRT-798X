@@ -29,8 +29,8 @@ on:
         type: boolean
         required: false
         default: false
- # schedule:
- #   - cron: '0 7 * * 5'  # 每周五 UTC 时间 07:00 运行（北京时间 15:00）
+  # schedule:
+  #   - cron: '0 7 * * 5'  # 每周五 UTC 时间 07:00 运行（北京时间 15:00）
 
 permissions:
   contents: write
@@ -405,7 +405,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          RELEASES=$(gh release list --repo ${{ github.repository }} --limit 100 --json name --jq '.[] | select(.name | test("ImmortalWrt-24.10-${{ matrix.device_model }}")) | .name' | tail -n +1)
+          RELEASES=$(gh release list --repo ${{ github.repository }} --limit 100 --json name --jq '.[] | select(.name | test("ImmortalWrt-24.10-${{ matrix.device_model }}")) | .name' | tail -n +21)
           if [ -n "$RELEASES" ]; then
             for RELEASE in $RELEASES; do
               gh release delete "$RELEASE" --yes || { echo "删除 Release $RELEASE 失败"; exit 1; }
